@@ -35,7 +35,7 @@ export default function Header() {
         <AiOutlineSearch className="text-1xl" />
       </Button>
 
-      <div className="flex gap-60 md:order-2">
+      <div className="flex gap-3 md:order-2">
         <Button
           className="w-12 h-10 flex items-center justify-center text-gray-500" // Adjusted height and centering
           color="gray"
@@ -44,7 +44,7 @@ export default function Header() {
         </Button>
 
         <Link to="/sing-in">
-          <button className="bg-gradient-to-r from-purple-600 to-orange-500 text-white font-medium py-2 px-4 rounded ">
+          <button className="bg-gradient-to-r from-purple-600 to-orange-500 text-white font-medium py-2 px-4 rounded  transition-colors duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-purple-600 hover:text-black">
             Sign in
           </button>
         </Link>
@@ -53,21 +53,21 @@ export default function Header() {
       <Navbar.Link
         active={currentPath === "/"}
         as={"div"}
-        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex"
+        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex transition-colors duration-300 hover:text-purple-600"
       >
         <Link to="/">Home</Link>
       </Navbar.Link>
       <Navbar.Link
         active={currentPath === "/about"}
         as={"div"}
-        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex"
+        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex transition-colors duration-300 hover:text-purple-600"
       >
         <Link to="/about">About</Link>
       </Navbar.Link>
       <Navbar.Link
         active={currentPath === "/projects"}
         as={"div"}
-        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex"
+        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex transition-colors duration-300 hover:text-purple-600"
       >
         <Link to="/projects">Projects</Link>
       </Navbar.Link>
