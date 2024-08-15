@@ -1,46 +1,54 @@
 import { Alert, Spinner } from "flowbite-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-
+import {
+  signInStart,
+  signInSuccess,
+  signInFailure,
+} from "../redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function SignIn() {
   const [formData, setFormData] = useState({});
+  const { loading, error: errorMessage } = useSelector((state) => state.user);
 
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!formData.email || !formData.password) {
-       
-      return setErrorMessage('Please fill out all fields');
+      return dispatch(signInFailure("Please fill out all fields"));
     }
 
     try {
-      setLoading(true);
-      setErrorMessage(null);
+      dispatch(signInStart());
+
       const res = await fetch("/api/auth/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
+
       const data = await res.json();
-      if (data.success === false){
-        return setErrorMessage(data.message);
+
+      if (!res.ok || data.success === false) {
+        return dispatch(
+          signInFailure(data.message || "Sign in failed. Please try again.")
+        );
       }
-      setLoading(false);
-      if(res.ok){
-        navigate ('/');
-      }
+
+      dispatch(signInSuccess(data));
+      navigate("/");
     } catch (error) {
-      setErrorMessage(error.message);
-      setLoading(false);
+      dispatch(
+        signInFailure("An error occurred during sign in. Please try again.")
+      );
     }
   };
 
@@ -64,8 +72,6 @@ export default function SignIn() {
         {/* SignUp Form Section */}
         <div className="pl-10 flex-grow">
           <form className="space-y-8" onSubmit={handleSubmit}>
-            
-
             <div>
               <label
                 htmlFor="password"
@@ -106,16 +112,16 @@ export default function SignIn() {
               <button
                 type="submit"
                 className="w-full flex justify-center py-4 px-6 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600"
-                disabled ={loading}
+                disabled={loading}
               >
-                {
-                  loading ? (
-                    <>
-                    <Spinner size='lg' />
-                     <span className="pl-3">Loading...</span>
-                     </>
-                    ) : 'Sing Up'
-                  }
+                {loading ? (
+                  <>
+                    <Spinner size="lg" />
+                    <span className="pl-3">Loading...</span>
+                  </>
+                ) : (
+                  "Sing Up"
+                )}
               </button>
             </div>
 
@@ -173,13 +179,11 @@ export default function SignIn() {
                 Sign Up
               </Link>
             </p>
-            {
-            errorMessage && (
+            {errorMessage && (
               <Alert className="mt-5 bg-red-600 text-white rounded-2xl">
                 {errorMessage}
               </Alert>
-            )
-          }
+            )}
           </div>
         </div>
       </div>
