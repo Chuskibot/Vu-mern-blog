@@ -2,6 +2,15 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import UserRoutes from './routes/user.route.js';
+import authRoutes from './routes/auth.route.js'
+
+
+
+
+
+
+
+
 
 dotenv.config();
 
@@ -15,12 +24,15 @@ mongoose.connect(process.env.MONGO)
 
 const app = express();
 // root path eir jonno  
+app.use(express.json());
 
 
 
 //for my api 
-app.use('/api/user', UserRoutes);
 
 app.listen(2000, () => {
   console.log('Server run hoice port Number 2000');
 });
+
+app.use('/api/user', UserRoutes);
+app.use('/api/auth', authRoutes);
