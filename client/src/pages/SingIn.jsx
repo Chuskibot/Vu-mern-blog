@@ -120,7 +120,7 @@ export default function SignIn() {
                     <span className="pl-3">Loading...</span>
                   </>
                 ) : (
-                  "Sing Up"
+                  "Sign In" // Corrected text
                 )}
               </button>
             </div>
@@ -181,7 +181,9 @@ export default function SignIn() {
             </p>
             {errorMessage && (
               <Alert className="mt-5 bg-red-600 text-white rounded-2xl">
-                {errorMessage}
+                {typeof errorMessage === "string"
+                  ? errorMessage
+                  : errorMessage.message}
               </Alert>
             )}
           </div>
