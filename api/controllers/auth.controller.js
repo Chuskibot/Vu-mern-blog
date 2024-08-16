@@ -103,6 +103,7 @@ export const google = async (req, res, next) => {
       });
 
       await newUser.save();
+      console.log(newUser.profilePicture);
 
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
       const { password, ...rest } = newUser._doc;
