@@ -1,6 +1,7 @@
 import { Alert, Spinner } from "flowbite-react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import OAuth from "../components/OAuth";
 
 
 
@@ -146,37 +147,7 @@ export default function SignUp() {
               </div>
             </div>
 
-            <div>
-              <button
-                type="button"
-                className="w-full flex items-center justify-center py-4 px-6 border border-gray-300 rounded-md shadow-sm text-lg font-medium text-gray-700 bg-white hover:bg-gray-50"
-              >
-                <svg
-                  className="w-6 h-6 mr-2"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M19.6 10.23c0-.65-.06-1.28-.17-1.89H10v3.58h5.4c-.23 1.16-.91 2.15-1.93 2.81v2.35h3.11c1.82-1.67 2.86-4.12 2.86-6.85z"
-                    fill="#4285F4"
-                  />
-                  <path
-                    d="M13.47 15.73a6.22 6.22 0 01-8.93-1.33l-3.05 2.35a10 10 0 0014.45-.01 7.88 7.88 0 01-2.47-5.01z"
-                    fill="#34A853"
-                  />
-                  <path
-                    d="M5.54 11.35a6.22 6.22 0 01-.24-1.73c0-.6.09-1.19.24-1.73l-3.05-2.34a10 10 0 000 9.41l3.05-2.34z"
-                    fill="#FBBC05"
-                  />
-                  <path
-                    d="M13.47 4.55a5.96 5.96 0 014.22 1.69l3.05-2.35A9.94 9.94 0 0013.47 0c-3.95 0-7.34 2.28-9.22 5.67l3.05 2.34a6.22 6.22 0 015.17-3.46z"
-                    fill="#EA4335"
-                  />
-                </svg>
-                <span>Continue with Google</span>
-              </button>
-            </div>
+            <OAuth />
           </form>
 
           <div className="mt-6 text-center text-sm">
