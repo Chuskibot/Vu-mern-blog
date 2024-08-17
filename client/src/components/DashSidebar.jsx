@@ -25,6 +25,7 @@ export default function DashSidebar() {
               <HiUser className="text-gray-900 dark:text-white" />
             )}
             className="mb-4 p-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700"
+            as='div'
           >
             Profile
           </Sidebar.Item>
