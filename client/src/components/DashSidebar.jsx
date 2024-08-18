@@ -40,11 +40,12 @@ export default function DashSidebar() {
       <Sidebar.Items>
         <Sidebar.ItemGroup>
           <Link to="/dashboard?tab=profile">
-          <Sidebar.Item
+            <Sidebar.Item
               active={tab === 'profile'}
               icon={HiUser}
               label={currentUser.isAdmin ? 'Admin' : 'User'}
               labelColor='dark'
+              className="mb-4 p-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700"
               as='div'
             >
               Profile
