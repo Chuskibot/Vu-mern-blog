@@ -50,7 +50,7 @@ export const singin = async (req, res, next) => {
       return next(errorHandler(400, "Invalid password"));
     }
     const token = jwt.sign(
-      { id: validUser._id },
+      { id: validUser._id, isAdmin:validUser.isAdmin},
       process.env.JWT_SECRET
       // dilam na Add expiration for security
     );
@@ -85,7 +85,7 @@ export const google = async (req, res, next) => {
   try {
     let user = await User.findOne({ email });
     if (user) {
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+      const token = jwt.sign({ id: user._id, isAdmin:user.isAdmin }, process.env.JWT_SECRET);
       const { password, ...rest } = user._doc;
       res
         .status(200)
@@ -105,7 +105,7 @@ export const google = async (req, res, next) => {
       await newUser.save();
       console.log(newUser.profilePicture);
 
-      const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
+      const token = jwt.sign({ id: newUser._id,isAdmin:newUser.isAdmin }, process.env.JWT_SECRET);
       const { password, ...rest } = newUser._doc;
       res
         .status(200)
