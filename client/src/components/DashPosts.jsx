@@ -92,7 +92,7 @@ export default function DashPosts() {
                   >
                     {post.title}
                   </Link>
-                  <p className='text-gray-600 dark:text-gray-400 mt-1'>{post.category}</p>
+                  <p className='text-gray-600 dark:text-gray-400 mt-1'>Department : {post.category}</p>
                   <p className='text-gray-500 dark:text-gray-300 mt-1'>
                     Updated on: {new Date(post.updatedAt).toLocaleDateString()}
                   </p>
@@ -143,10 +143,10 @@ export default function DashPosts() {
               Are you sure you want to delete this post?
             </h3>
             <div className='flex justify-center gap-4'>
-              <Button color='failure' onClick={handleDeletePost}>
+              <Button className='bg-red-500 text-white hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 font-semibold py-2 px-4 rounded-lg' onClick={handleDeletePost}>
                 Yes, I'm sure
               </Button>
-              <Button color='gray' onClick={() => setShowModal(false)}>
+              <Button className='bg-gray-500 text-white hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-50 font-semibold py-2 px-4 rounded-lg' onClick={() => setShowModal(false)}>
                 No, cancel
               </Button>
             </div>
