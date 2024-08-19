@@ -12,6 +12,7 @@ import OnlyAdminPrivateRoute from "./components/OnlyAdminPrivateRoute.jsx";
 import CreatePost from "./pages/CreatePost.jsx";
 import UpdatePost from './pages/UpdatePost';
 import PostPage from './pages/PostPage';
+import Search from './pages/Search';
 
 
 
@@ -34,6 +35,8 @@ export default function App() {
         <Route path="/sing-up" element={<SingUp />} />
         <Route path="/sing-in" element={<SingIn />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path='/search' element={<Search />} />
+        
       </Routes>
       <Footer />
     </BrowserRouter>
