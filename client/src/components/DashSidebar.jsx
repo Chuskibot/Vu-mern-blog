@@ -47,7 +47,7 @@ export default function DashSidebar() {
                 active={tab === 'dash' || !tab}
                 icon={HiChartPie}
                 as='div'
-                className="mb-4 p-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700"
+                className="mb-4 p-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-800"
               >
                 Dashboard
               </Sidebar.Item>
@@ -58,8 +58,8 @@ export default function DashSidebar() {
           active={tab === "profile"}
           icon={HiUser}
           label={currentUser.isAdmin ? "Admin" : "User"}
-          labelColor="dark"
-          className="mb-4 p-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-700"
+          labelColor="blue"
+          className="mb-4 p-3 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-800"
           as="div"
         >
           Profile

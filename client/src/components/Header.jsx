@@ -58,12 +58,12 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="border-b-2">
+    <Navbar className="bg-transparent border-b-4 border-teal-500 shadow-lg px-4 sm:px-6 lg:px-8">
       <Link
         to="/"
-        className="self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white"
+        className="self-center whitespace-nowrap text-xl sm:text-2xl font-bold dark:text-white transition-transform transform hover:scale-105"
       >
-        <span className='px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white'> 
+        <span className='px-3 py-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white shadow-md'> 
           VU
         </span>
         Blog
@@ -74,22 +74,21 @@ export default function Header() {
           <TextInput
             type="text"
             placeholder="Search..."
-            className="pl-10 pr-4 py-2 border rounded-full"
+            className="pl-10 pr-4 py-2 border rounded-full focus:ring-2 focus:ring-indigo-500"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          <AiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500" />
+          <AiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         </div>
       </form>
 
-      <Button className="w-12 h-10 flex text-gray-500 lg:hidden" color="gray" onClick={handleSearchSubmit}>
-        <AiOutlineSearch className="text-1xl" />
+      <Button className="w-12 h-10 flex items-center justify-center text-white lg:hidden" color="gray" onClick={handleSearchSubmit}>
+        <AiOutlineSearch className="text-xl" />
       </Button>
 
-      <div className="flex gap-3 md:order-2">
+      <div className="flex gap-4 md:order-2">
         <Button
-          className="w-12 h-10 flex items-center justify-center text-gray-500"
-          color="gray"
+          className="w-12 h-10 flex items-center justify-center text-white bg-gradient-to-r from-yellow-400 to-red-500 rounded-full hover:from-red-500 hover:to-yellow-400 transition-colors duration-300"
           onClick={() => dispatch(toggleTheme())}
         >
           {theme === "light" ? <FaSun /> : <FaMoon />}
@@ -104,6 +103,7 @@ export default function Header() {
                 alt="user"
                 img={currentUser.profilePicture || "path/to/default-image.png"}
                 rounded
+                className="shadow-lg"
               />
             }
           >
@@ -114,14 +114,14 @@ export default function Header() {
               </span>
             </Dropdown.Header>
             <Link to={"/dashboard?tab=profile"}>
-              <Dropdown.Item>Profile</Dropdown.Item>
+              <Dropdown.Item className="text-gray-700 bg-white hover:bg-gray-200">Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+            <Dropdown.Item onClick={handleSignout} className="text-gray-700 bg-white hover:bg-gray-200">Sign out</Dropdown.Item>
           </Dropdown>
         ) : (
-          <Link to="/sign-in">
-            <button className="bg-gradient-to-r from-purple-600 to-orange-500 text-white font-medium py-2 px-4 rounded transition-colors duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-purple-600 hover:text-black">
+          <Link to="/sing-in">
+            <button className="bg-gradient-to-r from-purple-600 to-orange-500 text-white font-medium py-2 px-4 rounded-full transition-colors duration-300 hover:bg-gradient-to-r hover:from-orange-500 hover:to-purple-600 hover:text-black">
               Sign in
             </button>
           </Link>
@@ -131,21 +131,21 @@ export default function Header() {
       <Navbar.Link
         active={location.pathname === "/"}
         as={"div"}
-        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex transition-colors duration-300 hover:text-purple-600"
+        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-3 py-2 rounded-lg inline-flex transition-colors duration-300 hover:text-white hover:from-purple-500 hover:to-orange-500"
       >
         <Link to="/">Home</Link>
       </Navbar.Link>
       <Navbar.Link
         active={location.pathname === "/about"}
         as={"div"}
-        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex transition-colors duration-300 hover:text-purple-600"
+        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-3 py-2 rounded-lg inline-flex transition-colors duration-300 hover:text-white hover:from-purple-500 hover:to-orange-500"
       >
         <Link to="/about">About</Link>
       </Navbar.Link>
       <Navbar.Link
         active={location.pathname === "/projects"}
         as={"div"}
-        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-2 rounded inline-flex transition-colors duration-300 hover:text-purple-600"
+        className="bg-gradient-to-r from-purple-300 to-orange-300 text-black font-medium px-3 py-2 rounded-lg inline-flex transition-colors duration-300 hover:text-white hover:from-purple-500 hover:to-orange-500"
       >
         <Link to="/projects">Projects</Link>
       </Navbar.Link>

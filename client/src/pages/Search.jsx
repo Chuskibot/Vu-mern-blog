@@ -145,7 +145,7 @@ export default function Search() {
             <option value="public-health">Public Health</option>
             </Select>
           </div>
-          <Button type='submit' outline gradientDuoTone='purpleToPink'>
+          <Button type='submit' className="bg-gradient-to-r from-purple-500 via-pink-500 to-pink-500 ...">
             Apply Filters
           </Button>
         </form>

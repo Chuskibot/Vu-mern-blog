@@ -202,15 +202,19 @@ export default function CommentSection({ postId }) {
               Are you sure you want to delete this comment?
             </h3>
             <div className='flex justify-center gap-4'>
-              <Button
-                color='failure'
-                onClick={() => handleDelete(commentToDelete)}
-              >
-                Yes, I'm sure
-              </Button>
-              <Button color='gray' onClick={() => setShowModal(false)}>
-                No, cancel
-              </Button>
+            <Button
+  className="bg-gradient-to-r from-red-600 to-red-400 text-white font-medium py-2 px-4 rounded transition-colors duration-300 hover:from-red-700 hover:to-red-500"
+  onClick={() => handleDelete(commentToDelete)}
+>
+  Yes, I'm sure
+</Button>
+<Button
+  className="bg-gradient-to-r from-gray-500 to-gray-300 text-white font-medium py-2 px-4 rounded transition-colors duration-300 hover:from-gray-600 hover:to-gray-400"
+  onClick={() => setShowModal(false)}
+>
+  No, cancel
+</Button>
+
             </div>
           </div>
         </Modal.Body>
