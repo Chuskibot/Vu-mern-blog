@@ -6,7 +6,7 @@ import authRoutes from './routes/auth.route.js'
 import postRoutes from './routes/post.router.js'
 import cookieParser from 'cookie-parser';
 import commentRoutes from './routes/comment.route.js';
-
+import path from 'path';
 
 
 
@@ -32,8 +32,8 @@ app.use(express.json());
 app.use(cookieParser());
 
 
+const __dirname = path.resolve();
 
-//for my api 
 
 app.listen(2000, () => {
   console.log('Server run hoice port Number 2000');
@@ -43,6 +43,14 @@ app.use('/api/user', UserRoutes);
 app.use('/api/auth', authRoutes);
 app.use('/api/post', postRoutes);
 app.use('/api/comment', commentRoutes);
+
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+});
+
+
 
 app.use((err, req, res, next ) =>{
 
